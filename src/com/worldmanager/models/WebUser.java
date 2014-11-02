@@ -7,8 +7,8 @@ public class WebUser implements Serializable {
 	
 	private String uid;
 	private String pwd;
-	private String authLevel;
 	
+	private int authLevel;
 	public String getUid() {
 		return uid;
 	}
@@ -21,14 +21,16 @@ public class WebUser implements Serializable {
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
-	public String getAuthLevel() {
+	public int getAuthLevel() {
 		return authLevel;
 	}
-	public void setAuthLevel(String authLevel) {
+	public void setAuthLevel(int authLevel) {
 		this.authLevel = authLevel;
 	}
 	
+	@Override
 	public String toString() {
-		return String.format("UID: %s\tPWD: %s\tAuthLevel: %d\n", getUid(), getPwd(), getAuthLevel());
+		return String.format("WebUser [uid=" + uid + ", pwd=" + pwd + ", authLevel="
+				+ authLevel + "]");
 	}
 }
