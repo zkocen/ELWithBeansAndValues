@@ -27,15 +27,15 @@ public abstract class DBUserInfo {
 		return pwd;
 	}
 
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
+	public void setPwd(String value) {
+		pwd = value;
 	}
 
 	public String getCat() {
 		return cat;
 	}
 
-	public void setCat(String cat) {
-		this.cat = cat;
+	public void setCat(String value) {
+		cat = value;
 	}
 }

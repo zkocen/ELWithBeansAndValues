@@ -18,7 +18,7 @@ public class WebUserTest {
 	public void setUp() throws Exception {
 		wu = new WebUser();
 		wu.setUserId(uid);
-		wu.setPwd(pwd);
+		wu.setPassword(pwd);
 		wu.setAuthLevel(authLevel);
 	}
 
@@ -29,8 +29,8 @@ public class WebUserTest {
 	
 	@Test
 	public void testMutatorsAndAccessors() {
-		assertEquals("value not set correcty for uid", uid, wu.getUid());
-		assertEquals("value not set correcty for pwd", pwd, wu.getPwd());
+		assertEquals("value not set correcty for uid", uid, wu.getUserId());
+		assertEquals("value not set correcty for pwd", pwd, wu.getPassword());
 		assertEquals("value not set correcty for auth level", authLevel, wu.getAuthLevel());
 	}
 	

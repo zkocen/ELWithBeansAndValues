@@ -4,35 +4,40 @@ import java.io.Serializable;
 
 public class WebUser implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	private String uid;
 	private String pwd;
 	private int authLevel;
-	
-	public WebUser(){}
-	
-	public String getUid() {
+
+	public WebUser() {}
+
+	public String getUserId() {
 		return uid;
 	}
+
 	public void setUserId(String value) {
 		uid = value;
 	}
-	public String getPwd() {
+
+	public String getPassword() {
 		return pwd;
 	}
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
+
+	public void setPassword(String value) {
+		pwd = value;
 	}
+
 	public int getAuthLevel() {
 		return authLevel;
 	}
-	public void setAuthLevel(int authLevel) {
-		this.authLevel = authLevel;
+
+	public void setAuthLevel(int value) {
+		authLevel = value;
 	}
-	
+
 	@Override
 	public String toString() {
-		return String.format("WebUser [uid=" + uid + ", pwd=" + pwd + ", authLevel="
-				+ authLevel + "]");
+		return "WebUser [uid=" + uid + ", pwd=" + pwd + ", authLevel="
+				+ authLevel + "]";
 	}
 }
