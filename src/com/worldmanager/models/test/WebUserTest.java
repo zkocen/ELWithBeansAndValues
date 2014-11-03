@@ -33,4 +33,12 @@ public class WebUserTest {
 		assertEquals("value not set correcty for pwd", pwd, wu.getPwd());
 		assertEquals("value not set correcty for auth level", authLevel, wu.getAuthLevel());
 	}
+	
+	@Test
+	public void testToString() {
+		String retStr = wu.toString();
+		assertTrue("ToString does not contain uid", retStr.contains(uid));
+		assertTrue("ToString does not contain pwd", retStr.contains(pwd));
+		assertTrue("ToString does not contain catalog", retStr.contains(String.format("%d", authLevel)));
+	}
 }
