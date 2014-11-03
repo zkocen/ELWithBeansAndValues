@@ -1,12 +1,13 @@
 package com.worldmanager.dbmodels;
 
-import org.apache.catalina.tribes.util.UUIDGenerator;
 
 public abstract class DBUserInfo {
 
 	private String uid;
 	private String pwd;
 	private String cat;
+	
+	public DBUserInfo(){}
 	
 	public DBUserInfo(String userID, String password, String catalog) {
 		uid = userID;
@@ -18,8 +19,8 @@ public abstract class DBUserInfo {
 		return uid;
 	}
 
-	public void setUid(String uid) {
-		this.uid = uid;
+	public void setUid(String value) {
+		uid = value;
 	}
 
 	public String getPwd() {

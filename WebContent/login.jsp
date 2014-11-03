@@ -15,6 +15,7 @@
 			  	<jsp:include page="navbar.jsp" />
 			</td>
 			<td style="width:75%;height:80%;">
+			<form id="login" method="post" action="loginuser.do">
 				<table style="width:450px">
 					<tr>
 						<td>
@@ -42,8 +43,10 @@
 					</tr>
 				</table>
 				<input type="hidden" name="dest" value="${param.dest}" />
+				</form>
 			</td>
-		</tr>
-	</table>
+			</tr>
+		</table>
+
 </body>
 </html>

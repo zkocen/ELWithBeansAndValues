@@ -17,7 +17,7 @@ public class WebUserTest {
 	@Before
 	public void setUp() throws Exception {
 		wu = new WebUser();
-		wu.setUid(uid);
+		wu.setUserId(uid);
 		wu.setPwd(pwd);
 		wu.setAuthLevel(authLevel);
 	}

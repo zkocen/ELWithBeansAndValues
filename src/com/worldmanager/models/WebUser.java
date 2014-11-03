@@ -7,13 +7,15 @@ public class WebUser implements Serializable {
 	
 	private String uid;
 	private String pwd;
-	
 	private int authLevel;
+	
+	public WebUser(){}
+	
 	public String getUid() {
 		return uid;
 	}
-	public void setUid(String uid) {
-		this.uid = uid;
+	public void setUserId(String value) {
+		uid = value;
 	}
 	public String getPwd() {
 		return pwd;
