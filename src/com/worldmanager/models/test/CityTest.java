@@ -24,5 +24,11 @@ public class CityTest {
 	public void testDefaultConstructor() {
 		assertNotNull("Could not create a default city", c);
 	}
+	
+	@Test
+	public void testMutatorsAndAccessors() {
+		c.setId(id);
+		assertEquals("Could not set ID as Expected", id, c.getId());
+	}
 
 }
