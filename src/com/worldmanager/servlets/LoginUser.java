@@ -37,12 +37,12 @@ public class LoginUser extends HttpServlet {
 		if (request.getParameter("rememberMe") != null) {
 			String rememberMe = request.getParameter("rememberMe");
 			if (rememberMe.equalsIgnoreCase("ON")) {
-				int cookieLife = 3600 * 24 * 7; // 7 days
+				int cookieLife = 3600 * 24 * 7; 
 				Cookie uidCook = new Cookie("credentials_uid", uid);
-				uidCook.setMaxAge(cookieLife); // 7 days
+				uidCook.setMaxAge(cookieLife); 
 				response.addCookie(uidCook);
 				Cookie pwdCook = new Cookie("credentials_pwd", pwd);
-				uidCook.setMaxAge(cookieLife); // 7 days
+				uidCook.setMaxAge(cookieLife); 
 				response.addCookie(pwdCook);
 			}
 		}
