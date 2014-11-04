@@ -42,7 +42,20 @@ public class DBManager implements Serializable {
 		return true;
 	}
 
-	private void closeConnection(boolean keepAlive) {
-		
+	private boolean closeConnection(boolean keepAlive) {
+		try {
+			if (cn != null) {
+				if (!cn.isClosed()) {
+					cn.close();
+				}
+			}
+			if (!keepAlive) {
+				cn = null;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 }
