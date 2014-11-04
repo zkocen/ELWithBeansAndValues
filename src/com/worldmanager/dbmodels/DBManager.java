@@ -42,7 +42,7 @@ public class DBManager implements Serializable {
 		return true;
 	}
 
-	private boolean closeConnection(boolean keepAlive) {
+	public boolean closeConnection(boolean keepAlive) {
 		try {
 			if (cn != null) {
 				if (!cn.isClosed()) {
@@ -57,5 +57,9 @@ public class DBManager implements Serializable {
 			return false;
 		}
 		return true;
+	}
+	
+	public boolean isConnected() {
+		return cn != null;
 	}
 }
