@@ -10,5 +10,13 @@ public class City implements Serializable {
 	private String district;
 	private int population;
 	
+	public void setId(int value) {
+		id = value;
+	}
+
+	public Object getId() {
+		return id;
+	}
+	
 
 }
