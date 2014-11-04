@@ -2,6 +2,11 @@ package com.worldmanager.dbmodels;
 
 import java.io.Serializable;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import com.mysql.jdbc.Statement;
 
 public class DBManager implements Serializable {
 	private static long serialVersion = 1L;
@@ -61,5 +66,39 @@ public class DBManager implements Serializable {
 	
 	public boolean isConnected() {
 		return cn != null;
+	}
+	
+	public boolean ExecuteNonQuery(String query) {
+		try {
+			Statement st = (Statement) cn.createStatement();
+			int i = st.executeUpdate(query);
+			if (i == -1) {
+				return false;
+			}
+			st.close();
+					
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+	
+	public ResultSet ExecuteResultSet(String query) throws SQLException {
+		PreparedStatement st = cn.prepareStatement(query);
+		ResultSet rs = st.executeQuery();
+		return rs;
+	}
+	
+	public Connection getConnection() {
+		return cn;
+	}
+	
+	public String getConnectionURL() {
+		return scb.getConnectionURL();
+	}
+	
+	public String getTablesSchemaQuery() {
+		return scb.getTablesSchemaQuery();
 	}
 }
