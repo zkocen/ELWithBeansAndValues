@@ -29,6 +29,31 @@ public class CityTest {
 	public void testMutatorsAndAccessors() {
 		c.setId(id);
 		assertEquals("Could not set ID as Expected", id, c.getId());
+
+		c.setName(name);
+		assertEquals("Could not set name as Expected", name, c.getName());
+		
+		c.setCountryCode(countryCode);
+		assertEquals("Could not set countryCode as Expected", countryCode, c.getCountryCode());
+		
+		c.setDistrict(district);
+		assertEquals("Could not set District as Expected", district, c.getDistrict());
+		
+		c.setPopulation(population);
+		assertEquals("Could not set Population as Expected", population, c.getPopulation());
+	}
+	
+	@Test
+	public void testToString() {
+		c.setId(id);
+		c.setName(name);
+		c.setCountryCode(countryCode);
+		c.setDistrict(district);
+		c.setPopulation(population);
+		
+		String retStr = c.toString();
+
+		assertTrue("toString does not contain expected value for id", retStr.contains(String.format("%d", id)));
 	}
 
 }
