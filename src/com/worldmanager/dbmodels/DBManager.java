@@ -22,4 +22,27 @@ public class DBManager implements Serializable {
 		scb = value;
 		return true;
 	}
+	
+	public boolean openConnection() {
+		try {
+			if (scb == null) {
+				throw new IllegalArgumentException("Can't open connection scb == null, connection behaviout must be defined");
+			}
+			if (cn != null) {
+				closeConnection(false);
+			}
+			cn = scb.getConnection();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		if (cn == null) {
+			return false;
+		}
+		return true;
+	}
+
+	private void closeConnection(boolean keepAlive) {
+		
+	}
 }
