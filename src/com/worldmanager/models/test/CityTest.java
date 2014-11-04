@@ -54,6 +54,10 @@ public class CityTest {
 		String retStr = c.toString();
 
 		assertTrue("toString does not contain expected value for id", retStr.contains(String.format("%d", id)));
+		assertTrue("toString does not contain expected value for name", retStr.contains(String.format("%s", name)));
+		assertTrue("toString does not contain expected value for countryCode", retStr.contains(String.format("%s", countryCode)));
+		assertTrue("toString does not contain expected value for district", retStr.contains(String.format("%s", district)));
+		assertTrue("toString does not contain expected value for population", retStr.contains(String.format("%d", population)));
 	}
 
 }
