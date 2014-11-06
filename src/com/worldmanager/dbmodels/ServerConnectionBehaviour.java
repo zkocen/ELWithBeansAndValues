@@ -2,9 +2,14 @@ package com.worldmanager.dbmodels;
 
 import java.sql.Connection;
 
-public interface ServerConnectionBehaviour extends Connection {
-	Connection getConnection();
-	String getConnectionURL();
-	String getConnectionDetails();
-	String getTablesSchemaQuery();
+public interface ServerConnectionBehaviour {
+
+	public Connection getConnection();
+
+	public String getConnectionURL();
+
+	public String getConnectionDetails();
+
+	public String getTablesSchemaQuery();
+
 }

@@ -1,7 +1,7 @@
 package com.worldmanager.dbmodels;
 
 
-public abstract class DBUserInfo {
+public class DBUserInfo {
 
 	private String uid;
 	private String pwd;

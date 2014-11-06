@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import com.mysql.jdbc.Statement;
 
 public class DBManager implements Serializable {
-	private static long serialVersion = 1L;
+	private static final long serialVersionUID = 1L;
 	
 	Connection cn = null;
 	ServerConnectionBehaviour  scb = null;
