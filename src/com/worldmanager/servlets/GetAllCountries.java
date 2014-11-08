@@ -1,6 +1,7 @@
 package com.worldmanager.servlets;
 
 import java.io.IOException;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.worldmanager.dbhelpers.DBWorldQueries;
 import com.worldmanager.dbmodels.DBManager;
 import com.worldmanager.models.Country;
 
@@ -40,6 +42,23 @@ public class GetAllCountries extends HttpServlet {
 					}
 				}
 				ArrayList<Country> allCountries = new ArrayList<Country>();
+				String query = DBWorldQueries.getCountriesByName();
+				try {
+					ResultSet rs = dbm.ExecuteResultSet(query);
+					while (rs.next()) {
+						Country c = new Country();
+						c.setCapital(rs.getString("Capital"));
+						c.setCode(rs.getString("code"));
+						c.setCode2(rs.getString("Code2"));
+						c.setContinent(rs.getString("Continent"));
+						c.setGnp(rs.getDouble("GNP"));
+						c.setGnpOld(rs.getDouble("GNPOld"));
+						c.setGovernmentForm(rs.getString("GovernmentForm"));
+						c.setHeadOfState(rs.getString("HeadOfState"));
+					}
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
 			}
 		}
 		
