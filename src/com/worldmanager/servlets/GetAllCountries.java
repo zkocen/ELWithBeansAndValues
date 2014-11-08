@@ -55,12 +55,26 @@ public class GetAllCountries extends HttpServlet {
 						c.setGnpOld(rs.getDouble("GNPOld"));
 						c.setGovernmentForm(rs.getString("GovernmentForm"));
 						c.setHeadOfState(rs.getString("HeadOfState"));
+						c.setIndepYear(rs.getInt("IndepYear"));
+						c.setLifeExpectancy(rs.getDouble("LifeExpectancy"));
+						c.setLocalName(rs.getString("LocalName"));
+						c.setName(rs.getString("Name"));
+						c.setPopulation(rs.getInt("Population"));
+						c.setRegion(rs.getString("Region"));
+						c.setSurfaceArea(rs.getDouble("SurfaceArea"));
+						allCountries.add(c);
 					}
+					s.setAttribute("All countries", allCountries);
+					target = "showAllCountries.jsp";
 				} catch (Exception e) {
-					// TODO: handle exception
+					throw new IOException("Query could not be executer for get all countries by name");
 				}
 			}
 		}
+		else {
+			target = "login.jsp?dest=listCountries";
+		}
+		response.sendRedirect(target);
 		
 	}
 
