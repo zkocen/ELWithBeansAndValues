@@ -31,5 +31,12 @@ public class CountryTest {
 		c = new Country();
 		assertNotNull("Could not create Country", c);
 	}
+	
+	@Test
+	public void testMutatorsAndAccessors() {
+		c = new Country();
+		c.setCode(code);
+		assertEquals("Could not set code as expected", code, c.getCode());
+	}
 
 }
