@@ -80,5 +80,41 @@ public class CountryTest {
 		c.setCode2(code2);
 		assertEquals("Could not set code2 as expected", code2, c.getCode2());
 	}
+	
+	@Test
+	public void testToString() {
+		c = new Country();
+		c.setCode(code);
+		c.setName(name);
+		c.setContinent(continent);
+		c.setRegion(region);
+		c.setSurfaceArea(surfaceArea);
+		c.setIndepYear(indepYear);
+		c.setPopulation(population);
+		c.setLifeExpectancy(lifeExpectancy);
+		c.setGnp(gnp);
+		c.setGnpOld(gnpOld);
+		c.setLocalName(localName);
+		c.setGovernmentForm(governmentForm);
+		c.setHeadOfState(headOfState);
+		c.setCapital(Capital);
+		c.setCode2(code2);
+		
+		String retStr = c.toString();
+		assertTrue(retStr.contains(code));
+		assertTrue(retStr.contains(name));
+		assertTrue(retStr.contains(region));
+		assertTrue(retStr.contains(String.format("%.1f\t", surfaceArea)));
+		assertTrue(retStr.contains(String.format("%d", indepYear)));
+		assertTrue(retStr.contains(String.format("%d", population)));
+		assertTrue(retStr.contains(String.format("%.1f\t",lifeExpectancy)));
+		assertTrue(retStr.contains(String.format("%.1f\t",gnp)));
+		assertTrue(retStr.contains(String.format("%.1f\t",gnpOld)));
+		assertTrue(retStr.contains(localName));
+		assertTrue(retStr.contains(governmentForm));
+		assertTrue(retStr.contains(headOfState));
+		assertTrue(retStr.contains(Capital));
+		assertTrue(retStr.contains(code2));
+	}
 
 }

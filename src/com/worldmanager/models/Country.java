@@ -11,7 +11,7 @@ public class Country implements Serializable {
 	private double surfaceArea;
 	private int indepYear;
 	private int population;
-	private int lifeExpectancy;
+	private double lifeExpectancy;
 	private double gnp; 
 	private double gnpOld; 
 	private String localName;
@@ -105,12 +105,12 @@ public class Country implements Serializable {
 
 
 	public void setLifeExpectancy(double value) {
-		lifeExpectancy = (int) value;
+		lifeExpectancy = value;
 	}
 
 
 
-	public int getLifeExpectancy() {
+	public double getLifeExpectancy() {
 		return lifeExpectancy;
 	}
 
@@ -194,5 +194,30 @@ public class Country implements Serializable {
 
 	public void setCode2(String value) {
 		code2 = value;
+	}
+
+
+
+	public String toString() {
+		return String.format(
+				"Code: %s\tName: %s\tContinent: %s\tRegion%s\t " 
+				+ "Surface Area: %.1f\tIndependence Year: %d\tPopulation: %d\t"
+				+ "Life Expectancy: %.1f\tGNP: %.1f\tGNP OLD: %.1f\tLocal Name: %s\t"
+				+ "GovernmentForm: %s\tHead Of State: %s\tCapital %s\tCode2: %s\n"
+				, getCode()
+				, getName()
+				, getContinent()
+				, getRegion()
+				, getSurfaceArea()
+				, getIndepYear()
+				, getPopulation()
+				, getLifeExpectancy()
+				, getGnp()
+				, getGnpOld()
+				, getLocalName()
+				, getGovernmentForm()
+				, getHeadOfState()
+				, getCapital()
+				, getCode2());
 	}
 }
