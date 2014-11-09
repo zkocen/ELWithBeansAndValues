@@ -27,21 +27,17 @@ public class GetAllCountries extends HttpServlet {
 	 */
 	public GetAllCountries() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String target = "";
 		HttpSession s = request.getSession();
 		if (s.getAttribute("authorized_user") != null) {
 			if (getServletContext().getAttribute("WorldDBManager") != null) {
-				DBManager dbm = (DBManager) getServletContext().getAttribute(
-						"WorldDBManager");
+				DBManager dbm = (DBManager) getServletContext().getAttribute("WorldDBManager");
 				if (!dbm.isConnected()) {
 					if (!dbm.openConnection()) {
-						throw new IOException(
-								"Could not connect to database and open connection");
+						throw new IOException("Could not connect to database and open connection");
 					}
 				}
 				ArrayList<Country> allCountries = new ArrayList<Country>();
@@ -50,17 +46,11 @@ public class GetAllCountries extends HttpServlet {
 					ResultSet rs = dbm.ExecuteResultSet(query);
 					while (rs.next()) {
 						Country c = new Country();
-						c.setCapital(rs.getString("Capital"));
 						c.setCode(rs.getString("Code"));
-						c.setCode2(rs.getString("Code2"));
 						c.setContinent(rs.getString("Continent"));
 						c.setGnp(rs.getDouble("GNP"));
-						c.setGnpOld(rs.getDouble("GNPOld"));
-						c.setGovernmentForm(rs.getString("GovernmentForm"));
-						c.setHeadOfState(rs.getString("HeadOfState"));
 						c.setIndepYear(rs.getInt("IndepYear"));
 						c.setLifeExpectancy(rs.getDouble("LifeExpectancy"));
-						c.setLocalName(rs.getString("LocalName"));
 						c.setName(rs.getString("Name"));
 						c.setPopulation(rs.getInt("Population"));
 						c.setRegion(rs.getString("Region"));
@@ -70,8 +60,7 @@ public class GetAllCountries extends HttpServlet {
 					s.setAttribute("AllCountries", allCountries);
 					target = "showAllCountries.jsp";
 				} catch (Exception e) {
-					throw new IOException(
-							"Query could not be executed for get all countries by name");
+					throw new IOException("Query could not be executed for get all countries by name");
 				}
 			}
 		} else {
@@ -81,13 +70,7 @@ public class GetAllCountries extends HttpServlet {
 
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}
 
 }

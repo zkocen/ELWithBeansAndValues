@@ -8,8 +8,8 @@ public class DBWorldQueries {
 	}
 	
 	public static String getCountriesByName() {
-		return"select *"
-				+ "from country"
+		return "select * "
+				+ "from Country "
 				+ "order by Name";
 	}
 }
