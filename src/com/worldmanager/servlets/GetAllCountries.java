@@ -21,24 +21,27 @@ import com.worldmanager.models.Country;
 @WebServlet("/getallcountries.do")
 public class GetAllCountries extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public GetAllCountries() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public GetAllCountries() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		String target = "";
 		HttpSession s = request.getSession();
 		if (s.getAttribute("authorized_user") != null) {
 			if (getServletContext().getAttribute("WorldDBManager") != null) {
-				DBManager dbm = (DBManager) getServletContext().getAttribute("WorldDBManager");
-				if (dbm.isConnected()) {
+				DBManager dbm = (DBManager) getServletContext().getAttribute(
+						"WorldDBManager");
+				if (!dbm.isConnected()) {
 					if (!dbm.openConnection()) {
-						throw new IOException("Could not connect to DB and open connection");
+						throw new IOException(
+								"Could not connect to database and open connection");
 					}
 				}
 				ArrayList<Country> allCountries = new ArrayList<Country>();
@@ -48,7 +51,7 @@ public class GetAllCountries extends HttpServlet {
 					while (rs.next()) {
 						Country c = new Country();
 						c.setCapital(rs.getString("Capital"));
-						c.setCode(rs.getString("code"));
+						c.setCode(rs.getString("Code"));
 						c.setCode2(rs.getString("Code2"));
 						c.setContinent(rs.getString("Continent"));
 						c.setGnp(rs.getDouble("GNP"));
@@ -64,24 +67,26 @@ public class GetAllCountries extends HttpServlet {
 						c.setSurfaceArea(rs.getDouble("SurfaceArea"));
 						allCountries.add(c);
 					}
-					s.setAttribute("All countries", allCountries);
+					s.setAttribute("AllCountries", allCountries);
 					target = "showAllCountries.jsp";
 				} catch (Exception e) {
-					throw new IOException("Query could not be executer for get all countries by name");
+					throw new IOException(
+							"Query could not be executed for get all countries by name");
 				}
 			}
-		}
-		else {
+		} else {
 			target = "login.jsp?dest=listCountries";
 		}
 		response.sendRedirect(target);
-		
+
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
 
