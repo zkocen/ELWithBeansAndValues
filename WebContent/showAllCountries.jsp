@@ -21,7 +21,7 @@
 					<% 
 						ArrayList<Country> allCountries = (ArrayList<Country>)session.getAttribute("AllCountries");
 						StringBuilder sb = new StringBuilder("");
-						sb.append("<tr><td>Name</td<td>Code</td><td>Region</td><td>Continent</td>");
+						sb.append("<tr><td>Name</td<td><td>Code</td><td>Region</td><td>Continent</td>");
 						for (Country c : allCountries) {
 							sb.append("<tr>");
 							sb.append("<td>" + c.getName() + "</td>");
